@@ -17,6 +17,14 @@ def hello_world():
 
 
 
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    with open('log2.txt', 'a') as f:
+        f.write("i got a webhook \n")
+    return 'webhook received', 200
+
+
+
 @app.route('/log')
 def show_log():
     return 'showing log file'
