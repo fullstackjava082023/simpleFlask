@@ -6,11 +6,13 @@ import os
 
 app = Flask(__name__)
 
+request_counter = 0
 
 @app.route('/')
 def hello_world():
     hostname = request.headers.get('Host')
-    return f'Hello, World! my server is: {hostname}'
+    return f'Hello, World! my server is: {hostname} and request count is: {request_counter}'
+
 
 
 @app.route('/log')
