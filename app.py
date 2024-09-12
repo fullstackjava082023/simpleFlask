@@ -1,5 +1,6 @@
 # craete simple flask app
 from flask import Flask
+import os
 
 
 
@@ -10,6 +11,10 @@ app = Flask(__name__)
 def hello_world():
     return 'Hello, World!'
 
+
+@app.route('/log')
+def show_log():
+    return 'showing log file'
 
 
 if __name__ == '__main__':
