@@ -1,5 +1,5 @@
 # craete simple flask app
-from flask import Flask
+from flask import Flask, request
 import os
 
 
@@ -9,7 +9,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    hostname = request.headers.get('Host')
+    return f'Hello, World! my server is: {hostname}'
 
 
 @app.route('/log')
