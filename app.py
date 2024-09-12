@@ -10,6 +10,7 @@ request_counter = 0
 
 @app.route('/')
 def hello_world():
+    request_counter += 1
     hostname = request.headers.get('Host')
     return f'Hello, World! my server is: {hostname} and request count is: {request_counter}'
 
