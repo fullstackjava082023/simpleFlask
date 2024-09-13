@@ -29,7 +29,8 @@ def webhook():
 def show_log():
     with open('/opt/simpleFlask/app.log', 'r') as f:
         log_data = f.read()
-    return log_data
+     # Wrap the log data in a <pre> tag to preserve formatting
+    return f"<pre>{log_data}</pre>"
 
 
 
