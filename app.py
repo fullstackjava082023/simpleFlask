@@ -32,9 +32,7 @@ def show_log():
     return log_data
 
 
-@app.route('/log')
-def show_log():
-    return 'showing log file'
+
 
 
 if __name__ == '__main__':
