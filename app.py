@@ -20,10 +20,16 @@ def hello_world():
 @app.route('/webhook', methods=['POST'])
 def webhook():
     print(f"Received webhook data", flush=True)
-    
+
     return 'Webhook received', 200
 
 
+# route to show log file
+@app.route('/log')
+def show_log():
+    with open('app.log', 'r') as f:
+        log_data = f.read()
+    return log_data
 
 
 @app.route('/log')
