@@ -20,6 +20,7 @@ def hello_world():
 @app.route('/webhook', methods=['POST'])
 def webhook():
     print(f"Received webhook data", flush=True)
+    
     return 'Webhook received', 200
 
 
