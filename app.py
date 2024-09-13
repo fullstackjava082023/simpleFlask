@@ -27,7 +27,7 @@ def webhook():
 # route to show log file
 @app.route('/log')
 def show_log():
-    with open('app.log', 'r') as f:
+    with open('/opt/simpleFlask/app.log', 'r') as f:
         log_data = f.read()
     return log_data
 
