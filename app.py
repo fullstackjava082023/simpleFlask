@@ -31,7 +31,7 @@ def webhook():
 # route to show webhook data
 @app.route('/webhooks')
 def show_webhooks():
-    with open('webhook_data.json', 'r') as f:
+    with open('webhook_data.json', 'w') as f:
         webhook_data = json.load(f)
     return f"<pre>{webhook_data}</pre>" 
 
