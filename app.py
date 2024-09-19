@@ -22,7 +22,7 @@ def webhook():
     print(f"Received webhook data ", flush=True)
     webhook_data = request.get_json()
     if webhook_data:
-        with open('webhook_data.json', 'w') as f:
+        with open('/opt/simpleFlask/webhook_data.json', 'w') as f:
             json.dump(webhook_data, f, indent=4)
         return 'Webhook received and saved', 200
     return 'Webhook received', 200
@@ -31,7 +31,7 @@ def webhook():
 # route to show webhook data
 @app.route('/webhooks')
 def show_webhooks():
-    with open('webhook_data.json', 'w') as f:
+    with open('/opt/simpleFlask/webhook_data.json', 'r') as f:
         webhook_data = json.load(f)
     return f"<pre>{webhook_data}</pre>" 
 
