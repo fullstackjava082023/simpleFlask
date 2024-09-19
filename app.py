@@ -1,6 +1,6 @@
 # craete simple flask app
 from flask import Flask, request
-import os
+import os, json
 
 
 
@@ -20,9 +20,20 @@ def hello_world():
 @app.route('/webhook', methods=['POST'])
 def webhook():
     print(f"Received webhook data ", flush=True)
-
+    webhook_data = request.get_json()
+    if webhook_data:
+        with open('webhook_data.json', 'w') as f:
+            json.dump(webhook_data, f, indent=4)
+        return 'Webhook received and saved', 200
     return 'Webhook received', 200
 
+
+# route to show webhook data
+@app.route('/webhooks')
+def show_webhooks():
+    with open('webhook_data.json', 'r') as f:
+        webhook_data = json.load(f)
+    return f"<pre>{webhook_data}</pre>" 
 
 # route to show log file
 @app.route('/log')
