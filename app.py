@@ -13,7 +13,11 @@ def hello_world():
     global request_counter
     request_counter += 1
     hostname = request.headers.get('Host')
-    return f'Hello, World! my server is: {hostname} and request count is: {request_counter}'
+     # Get the real client IP from the X-Forwarded-For header
+    real_ip = request.headers.get('X-Forwarded-For', request.remote_addr)
+    return f'''Hello, World! my server is: {hostname} and request count is: {request_counter}
+            the Machine IP address is: {real_ip}
+            '''
 
 
 
