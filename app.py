@@ -31,9 +31,14 @@ def webhook():
 # route to show webhook data
 @app.route('/webhooks')
 def show_webhooks():
-    with open('/opt/simpleFlask/webhook_data.json', 'r') as f:
-        webhook_data = json.load(f)
-    return f"<pre>{webhook_data}</pre>" 
+    if (os.path.exists('/opt/simpleFlask/webhook_data.json')):
+        with open('/opt/simpleFlask/webhook_data.json', 'r') as f:
+            webhook_data = json.load(f)
+            if webhook_data:
+                webhook_data = json.dumps(webhook_data, indent=4)
+    else:
+        webhook_data = 'No webhook data received yet'
+    return webhook_data 
 
 # route to show log file
 @app.route('/log')
